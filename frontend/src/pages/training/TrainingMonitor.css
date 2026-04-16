@@ -1,0 +1,198 @@
+/* ===== Metric Cards ===== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+}
+
+.metric-card-value {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-card-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-card-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ===== Progress bar ===== */
+.progress-section {
+  margin-bottom: 20px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.progress-info strong {
+  color: var(--accent-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-bar-outer {
+  height: 8px;
+  background: var(--bg-card);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.progress-sub {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ===== Training header ===== */
+.training-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.training-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pulse-dot.running {
+  background: var(--warning);
+  animation: pulseDot 1.5s infinite;
+}
+
+.pulse-dot.paused {
+  background: var(--text-muted);
+}
+
+.pulse-dot.completed {
+  background: var(--success);
+}
+
+.pulse-dot.failed {
+  background: var(--danger);
+}
+
+.pulse-dot.idle {
+  background: var(--text-muted);
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(253,203,110,0.5); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 7px rgba(253,203,110,0); }
+}
+
+/* ===== Charts row ===== */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ===== Bottom row ===== */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ===== Log output ===== */
+.log-output {
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.9;
+  max-height: 220px;
+  overflow-y: auto;
+  color: var(--text-muted);
+}
+
+.log-line { white-space: pre-wrap; word-break: break-all; }
+.log-info  { color: #8a8da0; }
+.log-metric { color: var(--accent-light); }
+.log-warn  { color: var(--warning); }
+.log-error { color: var(--danger); }
+
+/* ===== Config rows ===== */
+.config-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.config-row:last-child { border-bottom: none; }
+.config-label { color: var(--text-muted); }
+.config-value { font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* ===== Stop confirm overlay ===== */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirm-dialog {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+}
+
+.confirm-dialog h3 { font-size: 17px; margin-bottom: 8px; }
+.confirm-dialog p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+.confirm-dialog-buttons { display: flex; gap: 12px; justify-content: center; }
