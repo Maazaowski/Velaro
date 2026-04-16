@@ -1,0 +1,131 @@
+/* ===== Use Case Cards ===== */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.usecase-card {
+  background: var(--bg-primary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.usecase-card:hover { border-color: var(--border-light); }
+.usecase-card.selected { border-color: var(--accent); background: var(--accent-glow); }
+
+.usecase-card svg {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.usecase-card.selected svg { color: var(--accent-light); }
+
+.usecase-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.usecase-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ===== Architecture Cards ===== */
+.arch-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.arch-card {
+  background: var(--bg-primary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.arch-card:hover { border-color: var(--border-light); }
+.arch-card.selected { border-color: var(--accent); background: var(--accent-glow); }
+
+.arch-icon { font-size: 32px; margin-bottom: 10px; }
+.arch-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.arch-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+/* ===== Architecture Diagram ===== */
+.arch-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0;
+}
+
+.arch-diagram-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.arch-block {
+  padding: 10px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  min-width: 260px;
+}
+
+.arch-block.input { background: rgba(108, 92, 231, 0.15); color: var(--accent-light); }
+.arch-block.embedding { background: rgba(0, 206, 201, 0.15); color: var(--success); }
+.arch-block.attention { background: rgba(253, 203, 110, 0.15); color: var(--warning); }
+.arch-block.ffn { background: rgba(255, 118, 117, 0.15); color: var(--danger); }
+.arch-block.repeat { background: var(--bg-card); color: var(--text-muted); border: 1px dashed var(--border-light); }
+.arch-block.output { background: rgba(108, 92, 231, 0.15); color: var(--accent-light); }
+
+.arch-arrow {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+/* ===== Model Config Layout ===== */
+.config-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+}
+
+.config-main { min-width: 0; }
+
+.config-sidebar {
+  position: relative;
+}
+
+.sticky-card {
+  position: sticky;
+  top: 0;
+}
+
+/* ===== Review Grid ===== */
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ===== Disabled button ===== */
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
