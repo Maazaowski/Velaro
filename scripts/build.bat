@@ -55,10 +55,18 @@ echo    Python: OK
 echo    Node:   OK
 echo    Cargo:  OK
 
-:: ── 3. Install Python dependencies ───────────────────────────
+:: ── 3. Install Python dependencies (in isolated venv) ────────
 echo.
-echo %YELLOW%[2/5] Installing Python dependencies...%RESET%
+echo %YELLOW%[2/5] Installing Python dependencies (venv)...%RESET%
 cd /d "%BACKEND%"
+if not exist ".venv" (
+    python -m venv .venv || (
+        echo %RED%ERROR: failed to create venv%RESET%
+        exit /b 1
+    )
+)
+call .venv\Scripts\activate.bat
+python -m pip install --upgrade pip --quiet
 python -m pip install -r requirements.txt --quiet || (
     echo %RED%ERROR: pip install failed%RESET%
     exit /b 1

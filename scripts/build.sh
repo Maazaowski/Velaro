@@ -49,11 +49,17 @@ echo "   Python3: $(python3 --version)"
 echo "   Node:    $(node --version)"
 echo "   Cargo:   $(cargo --version)"
 
-# ── 2. Python dependencies ───────────────────────────────────
-info "[2/5] Installing Python dependencies..."
+# ── 2. Python dependencies (in isolated venv) ────────────────
+info "[2/5] Installing Python dependencies (venv)..."
 cd "$BACKEND"
-python3 -m pip install -r requirements.txt -q
-python3 -m pip install pyinstaller -q
+if [[ ! -d ".venv" ]]; then
+    python3 -m venv .venv
+fi
+# shellcheck disable=SC1091
+source .venv/bin/activate
+python -m pip install --upgrade pip -q
+python -m pip install -r requirements.txt -q
+python -m pip install pyinstaller -q
 echo "   Done."
 
 # ── 3. PyInstaller ───────────────────────────────────────────

@@ -62,9 +62,23 @@ fn spawn_backend(app: &tauri::App) -> Option<Child> {
             .map(|p| p.join("backend"))
             .unwrap_or_else(|| tauri_dir.join("../../backend"));
 
-        let py = if cfg!(target_os = "windows") { "python" } else { "python3" };
+        // Prefer the backend's virtualenv Python if it exists,
+        // otherwise fall back to the system interpreter.
+        let venv_py = if cfg!(target_os = "windows") {
+            backend_dir.join(".venv").join("Scripts").join("python.exe")
+        } else {
+            backend_dir.join(".venv").join("bin").join("python")
+        };
 
-        let child = Command::new(py)
+        let py: std::ffi::OsString = if venv_py.exists() {
+            venv_py.into_os_string()
+        } else if cfg!(target_os = "windows") {
+            "python".into()
+        } else {
+            "python3".into()
+        };
+
+        let child = Command::new(&py)
             .args([
                 "-m",
                 "uvicorn",

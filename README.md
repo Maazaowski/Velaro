@@ -125,10 +125,23 @@ git clone https://github.com/your-username/velaro.git
 cd velaro
 ```
 
-### 2. Install Python dependencies
+### 2. Install Python dependencies (in a virtual environment)
 
+> **Important:** always use a venv to avoid conflicts with other Python packages on your system.
+
+**Windows:**
+```bat
+cd backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+**Linux / macOS:**
 ```bash
 cd backend
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -143,11 +156,15 @@ npm install
 
 Open **two terminals**:
 
-**Terminal 1 — Backend:**
+**Terminal 1 — Backend (with venv activated):**
 ```bash
 cd backend
+.venv\Scripts\activate            # Windows
+# source .venv/bin/activate       # Linux / macOS
 uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 ```
+
+> **Tip:** when launched via `npm run tauri dev`, Tauri auto-detects `backend/.venv/` and uses its Python interpreter, so you don't need to activate it manually.
 
 **Terminal 2 — Frontend + Tauri:**
 ```bash
