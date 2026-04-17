@@ -12,13 +12,17 @@
   "app": {
     "windows": [
       {
-        "title": "Velaro - LLM Model Builder",
+        "title": "Velaro",
+        "label": "main",
         "width": 1280,
         "height": 800,
         "minWidth": 1024,
         "minHeight": 700,
         "resizable": true,
-        "fullscreen": false
+        "fullscreen": false,
+        "center": true,
+        "decorations": true,
+        "visible": true
       }
     ],
     "security": {
@@ -34,6 +38,16 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "perMachine",
+        "displayLanguageSelector": false
+      }
+    },
+    "shortDescription": "Build and run your own LLM models — no code required.",
+    "longDescription": "Velaro is a no-code desktop tool for building, training, testing, and deploying local LLM models.",
+    "copyright": "Copyright © 2025 Velaro",
+    "category": "DeveloperTool"
   }
 }
